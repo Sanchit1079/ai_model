@@ -33,10 +33,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+    "Melanocytic nevi,Melanoma,Benign keratosis-like lesions,Basal cell carcinoma,Actinic keratoses,Vascular lesions,Dermatofibroma"
 # Initialize model manager
-model_path = os.getenv("MODEL_PATH", "model/skin_cancer_model.tflite")
-class_labels = os.getenv("CLASS_LABELS", "benign,malignant").split(",")
+model_path = os.getenv("MODEL_PATH", "./skin_cancer_model.tflite")
+class_labels = os.getenv("CLASS_LABELS", "Melanocytic nevi,Melanoma,Benign keratosis-like lesions,Basal cell carcinoma,Actinic keratoses,Vascular lesions,Dermatofibroma").split(",")
 model_manager = ModelManager(model_path, class_labels)
 
 @app.on_event("startup")
