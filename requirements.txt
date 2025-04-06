@@ -1,7 +1,10 @@
 httpx
 numpy
-fastapi
-uvicorn
 pillow
+fastapi
+pymongo
+uvicorn
+dnspython
+python-dotenv
 python-multipart
 tensorflow==2.15.0
