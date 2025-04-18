@@ -1,8 +1,8 @@
-import base64
-from io import BytesIO
-from PIL import Image
 import httpx
+import base64
 import numpy as np
+from PIL import Image
+from io import BytesIO
 
 async def load_image_from_url(url: str):
     async with httpx.AsyncClient() as client:
