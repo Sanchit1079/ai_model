@@ -1,8 +1,9 @@
-import base64
-from io import BytesIO
-from PIL import Image
 import httpx
+import base64
 import numpy as np
+from PIL import Image
+from io import BytesIO
+
 
 async def load_image_from_url(url: str):
     async with httpx.AsyncClient() as client:
@@ -10,9 +11,11 @@ async def load_image_from_url(url: str):
         response.raise_for_status()
         return Image.open(BytesIO(response.content)).convert("RGB")
 
+
 def load_image_from_base64(base64_str: str):
     image_data = base64.b64decode(base64_str)
     return Image.open(BytesIO(image_data)).convert("RGB")
+
 
 def preprocess_image(image: Image.Image, target_size=(128, 128)):
     image = image.resize(target_size)

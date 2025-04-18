@@ -6,6 +6,5 @@ pymongo
 uvicorn
 dnspython
 python-dotenv
-huggingface_hub
 python-multipart
-tensorflow==2.17.0
+tensorflow==2.15.0

@@ -17,14 +17,15 @@ client = MongoClient(MONGO_URI)
 db = client["skin_cancer_app"]
 collection = db["history"]
 
+
 class PredictRequest(BaseModel):
     base64_image: str = None
     image_url: str = None
     patient_name: str = None
     patient_age: int = None
-    contact_no: int = None,
+    contact_no: int = (None,)
     scar_duration: int = None
-    
+
 
 @app.post("/predict")
 async def predict(payload: PredictRequest):
@@ -46,17 +47,18 @@ async def predict(payload: PredictRequest):
             "contact_no": payload.contact_no,
             "scar_duration": payload.scar_duration,
             "result": result,
-            "timestamp": datetime.utcnow()
+            "timestamp": datetime.utcnow(),
         }
         collection.insert_one(record)
 
         return {"success": True, "result": result}
     except Exception as e:
         return {"success": False, "error": str(e)}
-    
+
+
 @app.get("/history")
 def get_history():
-    docs = list(collection.find({}, {'_id': 0}))
+    docs = list(collection.find({}, {"_id": 0}))
     return {"success": True, "records": docs}
 
 
