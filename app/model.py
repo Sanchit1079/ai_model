@@ -21,7 +21,7 @@ class ModelHandler:
         self.model = load_model(model_path)
         self.class_keys = list(lesion_type_dict.keys())
 
-    def predict(self, image_array: np.ndarray, threshold: float = 0.5):
+    def predict(self, image_array: np.ndarray, threshold: float = 0.2):
         if len(image_array.shape) == 3:
             image_array = np.expand_dims(image_array, axis=0)
 
