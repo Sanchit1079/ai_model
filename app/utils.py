@@ -19,5 +19,5 @@ def load_image_from_base64(base64_str: str):
 
 def preprocess_image(image: Image.Image, target_size=(128, 128)):
     image = image.resize(target_size)
-    image_array = np.array(image) / 255.0
-    return np.expand_dims(image_array.astype(np.float32), axis=0)
+    image_array = np.array(image).astype("float32") / 255.0
+    return np.expand_dims(image_array, axis=0)
