@@ -38,7 +38,7 @@ git clone https://github.com/your-repo/skin-cancer-api
 cd skin-cancer-api
 ```
 
-### 2. Install Requirements
+### 2. Install requirements
 
 ```bash
 pip install -r requirements.txt
